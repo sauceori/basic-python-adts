@@ -7,7 +7,7 @@ empty among other uses.
 """
 
 import unittest
-from challenge import List
+from adts.list import List
 
 class ListTester(unittest.TestCase):
     """Contains the unit tests for the public interface of a linked list.
