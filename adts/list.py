@@ -54,6 +54,7 @@ class List:
         """
         #Node to be added to the list
         new_node = Node(new)
+        new_node.next = self.head
         #If the list is empty, then this is the first node
         if self.head == None:
             self.head = new_node
@@ -78,7 +79,7 @@ class List:
         Arguments:
         self -- reference to this list instance
         """
-        if self.head != None:
+        if self.head is not None:
             #Get the data from the old head
             data = self.head.data
 
@@ -100,6 +101,7 @@ class List:
         """
         #Node to be added to the list
         new_node = Node(new)
+        new_node.prev = self.tail
         #If the list is empty, then this is the first node
         if self.head == None:
             self.head = new_node
@@ -124,7 +126,7 @@ class List:
         Arguments:
         self -- reference to this list instance
         """
-        if self.tail != None:
+        if self.tail is not None:
             #Get the data from the old tail
             data = self.tail.data
 
@@ -132,7 +134,7 @@ class List:
             self.tail = self.tail.prev
 
             #Remove the new tail's pointer to the old one
-            self.tail.next == None
+            self.tail.next = None
 
             #Return the old tail data
             return data
@@ -190,9 +192,11 @@ class List:
         """
         #New node to be inserted
         new_node = Node(new)
+        new_node.prev = node.prev
+        new_node.next = node
         #If node is head, use the push_front method
         if node.prev == None:
-            push_front(new)
+            self.push_front(new)
         else:
             node.prev.next = new_node
             node.prev = new_node
@@ -207,9 +211,94 @@ class List:
         """
         #New node to be inserted
         new_node = Node(new)
+        new_node.prev = node
+        new_node.next = node.next
         #If node is tail, use the push_back method
         if node.next == None:
-            push_back(new)
+            self.push_back(new)
         else:
             node.next.prev = new_node
             node.next = new_node
+
+    def print_list(self):
+        """Prints all elements in the list.
+
+        Arguments:
+        self -- reference to this list instance
+        """
+        node = self.head
+        while node != None:
+            print(node.data)
+            node = node.next
+
+def main():
+    """Contains "quick and dirty" checks for the list ADT."""
+
+    #List for the method checks
+    list = List()
+    print("List created.")
+
+    #empty should return true as nothing has been added to the list
+    if(list.empty() == True):
+        print("Empty works!")
+
+    #Test push_front
+    for x in range(6):
+        list.push_front(x)
+    list.print_list()
+
+    #Test top_front
+    if list.top_front() == 5:
+        print("top_front works!")
+
+    #Test pop_front
+    if list.pop_front() == 5:
+        list.print_list()
+        print("pop_front works!")
+
+    list = List()
+
+    #Test push_back
+    for x in range(6):
+        list.push_back(x)
+    list.print_list()
+
+    #Test top_back
+    if list.top_back() == 5:
+        print("top_back works!")
+
+    #Check head and tail
+    print("Current head: " + str(list.head.data))
+    print("Current tail: " + str(list.tail.data))
+
+    #Test pop_back
+    if list.pop_back() == 5:
+        list.print_list()
+        print("pop_back works!")
+
+    #Test find
+    if list.find(3) is True and list.find(5) is False:
+        print("find works!")
+
+    #Test erase
+    list.erase(3)
+    if list.find(3) is False:
+        list.print_list()
+        print("erase works!")
+
+    #Test add_before
+    node = list.head
+    while node.data != 4:
+        node = node.next
+    list.add_before(node, 3)
+    list.print_list()
+    print("add_before works!")
+
+    #Test add_after
+    list.add_after(node, 5)
+    list.add_after(node, 4.5)
+    list.print_list()
+    print("add_after works!")
+
+#Run the checks
+#main()
