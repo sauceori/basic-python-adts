@@ -16,7 +16,7 @@ class StackTester(unittest.TestCase):
     def setUp(self):
         self.stack = Stack()
 
-    def test_push(self, new):
+    def test_push(self):
         """Tests the push method in the stack class.
 
         push introduces a new item at the top of the stack.
@@ -35,7 +35,7 @@ class StackTester(unittest.TestCase):
         actual = self.stack.top()
 
         #Assert expected and actual are the same string
-        assertEqual(actual, expected)
+        self.assertEqual(actual, expected)
 
     def test_top(self):
         """Tests the top method in the stack class.
@@ -55,7 +55,7 @@ class StackTester(unittest.TestCase):
         self.stack.push("/home/ethan/Templates")
 
         #Assert expected and actual are the same string
-        assertEqual(self.stack.top(), expected)
+        self.assertEqual(self.stack.top(), expected)
 
     def test_pop(self):
         """Tests the pop method in the stack class.
@@ -76,7 +76,7 @@ class StackTester(unittest.TestCase):
         actual = self.stack.pop()
 
         #Assert that the top item was returned by pop
-        assertEqual(actual, expected)
+        self.assertEqual(actual, expected)
 
     def test_empty(self):
         """Tests the empty method in the stack class.
