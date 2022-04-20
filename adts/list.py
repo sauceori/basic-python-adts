@@ -148,7 +148,7 @@ class List:
         """
         #Iterate through the linked list to find key
         node = self.head
-        while node.next != None:
+        while node is not None:
             #If the node data and key match return true
             if node.data == key:
                 return True
@@ -165,13 +165,19 @@ class List:
         """
         #Iterate through the linked list to find key
         node = self.head
-        while node.next != None:
-            #If the node data and key match remove the node and break
-            if node.data == key:
-                #Remove node from the list
+        while node != None and node.data != key:
+            node = node.next
+
+        #If the node data and key match remove the node and break
+        if node.data == key:
+            #Remove node from the list
+            if node.prev == None:
+                self.pop_front()
+            elif node.next == None:
+                self.pop_back()
+            else:
                 node.prev.next = node.next
                 node.next.prev = node.prev
-            node = node.next
 
     def empty(self):
         """Returns true if the list is empty, else false.

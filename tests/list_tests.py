@@ -33,10 +33,10 @@ class ListTester(unittest.TestCase):
         #Actual list for which push_front is called
         for x in range(6):
             self.list.push_front(x)
-        actual = self.list.head.next.prev.data
+        actual = self.list.head.data
 
         #Assert expected and the head of actual are equal
-        self.assertEquals(actual, expected)
+        self.assertEqual(actual, expected)
 
     def test_top_front(self):
         """Tests the top_front method in the list class.
@@ -56,11 +56,11 @@ class ListTester(unittest.TestCase):
         alphabet = "abcdefghijklmnopqrstuvwxyz"
         for letter in alphabet:
             self.list.push_front(letter)
-        actual = top_front(self.list)
+        actual = self.list.head
 
         #Assert that the node at the head is as expected
-        self.assertEquals(actual.data, expected_data)
-        self.assertEquals(actual.prev, expected_prev)
+        self.assertEqual(actual.data, expected_data)
+        self.assertEqual(actual.prev, expected_prev)
 
     def test_pop_front(self):
         """Tests the pop_front method in the list class.
@@ -81,12 +81,12 @@ class ListTester(unittest.TestCase):
         week = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday']
         for day in week:
             self.list.push_front(day)
-        actual_old = self.list.pop_front().data
+        actual_old = self.list.pop_front()
         actual_new = self.list.head.data
 
         #Assert the data at the new and old head is as expected
-        self.assertEquals(actual_old, expected_old)
-        self.assertEquals(actual_new, expected_new)
+        self.assertEqual(actual_old, expected_old)
+        self.assertEqual(actual_new, expected_new)
 
     def test_push_back(self):
         """Tests the push_back method in the list class.
@@ -108,7 +108,7 @@ class ListTester(unittest.TestCase):
         actual = self.list.tail.prev.next.data
 
         #Assert the tail is as expected
-        self.assertEquals(actual, expected)
+        self.assertEqual(actual, expected)
 
     def test_top_back(self):
         """Tests the top_back method in the list class.
@@ -126,11 +126,12 @@ class ListTester(unittest.TestCase):
         #Actual list on which top_back is called
         for x in range(6):
             self.list.push_back(x)
-        actual = list.top_back()
+        actual_data = self.list.top_back()
+        actual_next = self.list.tail.next
 
         #Assert the node at the tail is as expected
-        self.assertEquals(actual.data, expected_data)
-        self.assertEquals(actual.next, expected_next)
+        self.assertEqual(actual_data, expected_data)
+        self.assertEqual(actual_next, expected_next)
 
     def test_pop_back(self):
         """Tests the pop_back method in the list class.
@@ -151,12 +152,12 @@ class ListTester(unittest.TestCase):
         alphabet = 'abcdefghijklmnopqrstuvwxyz'
         for letter in alphabet:
             self.list.push_back(letter)
-        actual_old = self.list.pop_back().data
+        actual_old = self.list.pop_back()
         actual_new = self.list.tail.data
 
         #Assert the data at the new and old tail are as expected
-        self.assertEquals(actual_old, expected_old)
-        self.assertEquals(actual_new, expected_new)
+        self.assertEqual(actual_old, expected_old)
+        self.assertEqual(actual_new, expected_new)
 
     def test_find(self):
         """Tests the find method in the list class.
@@ -179,7 +180,7 @@ class ListTester(unittest.TestCase):
         self.assertFalse(self.list.find(expected))
 
         #Add expected to the list
-        self.list.push_back('wednesday')
+        self.list.push_back(expected)
 
         #Assert that expected can now be found in the list
         self.assertTrue(self.list.find(expected))
@@ -208,10 +209,10 @@ class ListTester(unittest.TestCase):
         actual_tail = self.list.tail.data
 
         #Assert that the head is 'feb' after having removed the old 'jan'
-        self.assertEquals(actual_head, expected_head)
+        self.assertEqual(actual_head, expected_head)
 
         #Assert that the second instance of 'jan' hasn't been removed
-        self.assertEquals(actual_tail, expected_tail)
+        self.assertEqual(actual_tail, expected_tail)
 
     def test_empty(self):
         """Tests the empty method in the list class.
@@ -248,15 +249,15 @@ class ListTester(unittest.TestCase):
 
         #Actual list
         self.list.push_back(1)
-        self.list.add_before(1, 0)
+        self.list.add_before(self.list.head, 0)
 
         #Actual head and tail values
         actual_head = self.list.head.data
         actual_tail = self.list.tail.data
 
         #Assert that the head and tail values are as expected
-        self.assertEquals(actual_head, expected_head)
-        self.assertEquals(actual_tail, expected_tail)
+        self.assertEqual(actual_head, expected_head)
+        self.assertEqual(actual_tail, expected_tail)
 
     def test_add_after(self):
         """Tests the add_after method in the list class.
@@ -275,7 +276,7 @@ class ListTester(unittest.TestCase):
 
         #Actual list
         self.list.push_back(0)
-        self.list.add_after(0, 1)
+        self.list.add_after(self.list.head, 1)
 
         #Actual head and tail values
         actual_head = self.list.head.data
