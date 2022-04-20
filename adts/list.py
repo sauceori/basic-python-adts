@@ -42,7 +42,6 @@ class List:
         Arguments:
         self -- reference to the node being constructed
         """
-
         self.head = None
         self.tail = None
 
@@ -53,7 +52,16 @@ class List:
         self -- reference to this list instance
         new -- data value for the new node
         """
-        pass
+        #Node to be added to the list
+        new_node = Node(new)
+        #If the list is empty, then this is the first node
+        if self.head == None:
+            self.head = new_node
+            self.tail = new_node
+        #Else new node becomes prev to current head, then the new head
+        else:
+            self.head.prev = new_node
+            self.head = new_node
 
     def top_front(self):
         """Returns the value at the front of the list.
@@ -61,15 +69,27 @@ class List:
         Arguments:
         self -- reference to this list instance
         """
-        pass
+        if self.head != None:
+            return self.head.data
 
     def pop_front(self):
-        """Removes the front item and returns its data.
+        """Removes the head and returns its data.
 
         Arguments:
         self -- reference to this list instance
         """
-        pass
+        if self.head != None:
+            #Get the data from the old head
+            data = self.head.data
+
+            #Update the head pointer
+            self.head = self.head.next
+
+            #Remove the new head's pointer to the old one
+            self.head.prev = None
+
+            #Return the old head data
+            return data
 
     def push_back(self, new):
         """Adds a new node at the back of the list, replacing the tail node.
@@ -78,7 +98,16 @@ class List:
         self -- reference to this list instance
         new -- data value for the new node
         """
-        pass
+        #Node to be added to the list
+        new_node = Node(new)
+        #If the list is empty, then this is the first node
+        if self.head == None:
+            self.head = new_node
+            self.tail = new_node
+        #Else new node becomes next to current tail, then new tail
+        else:
+            self.tail.next = new_node
+            self.tail = new_node
 
     def top_back(self):
         """Returns the value at the end of the list.
@@ -86,7 +115,8 @@ class List:
         Arguments:
         self -- reference to this list instance
         """
-        pass
+        if self.tail != None:
+            return self.tail.data
 
     def pop_back(self):
         """Removes the front item and returns its data.
@@ -94,7 +124,18 @@ class List:
         Arguments:
         self -- reference to this list instance
         """
-        pass
+        if self.tail != None:
+            #Get the data from the old tail
+            data = self.tail.data
+
+            #Update the tail pointer
+            self.tail = self.tail.prev
+
+            #Remove the new tail's pointer to the old one
+            self.tail.next == None
+
+            #Return the old tail data
+            return data
 
     def find(self, key):
         """Returns true if the key is in the list, else false.
@@ -103,7 +144,15 @@ class List:
         self -- reference to this list instance
         key -- the value to be searched for in the list
         """
-        pass
+        #Iterate through the linked list to find key
+        node = self.head
+        while node.next != None:
+            #If the node data and key match return true
+            if node.data == key:
+                return True
+            node = node.next
+        #If the key is never found in the list return false
+        return False
 
     def erase(self, key):
         """Removes the first instance of the key fron the list, if it exists.
@@ -112,7 +161,15 @@ class List:
         self -- reference to this list instance
         key -- the value to be removed from the list
         """
-        pass
+        #Iterate through the linked list to find key
+        node = self.head
+        while node.next != None:
+            #If the node data and key match remove the node and break
+            if node.data == key:
+                #Remove node from the list
+                node.prev.next = node.next
+                node.next.prev = node.prev
+            node = node.next
 
     def empty(self):
         """Returns true if the list is empty, else false.
@@ -120,7 +177,8 @@ class List:
         Arguments:
         self -- reference to this list instance
         """
-        pass
+        if self.head == None:
+            return True
 
     def add_before(self, node, new):
         """Inserts a node containing new before a given node.
@@ -130,7 +188,14 @@ class List:
         node -- the node before which new is inserted
         new -- data value for the new node
         """
-        pass
+        #New node to be inserted
+        new_node = Node(new)
+        #If node is head, use the push_front method
+        if node.prev == None:
+            push_front(new)
+        else:
+            node.prev.next = new_node
+            node.prev = new_node
 
     def add_after(self, node, new):
         """Inserts a node containing new after a given node.
@@ -140,4 +205,11 @@ class List:
         node -- the node before which new is inserted
         new -- data value for the new node
         """
-        pass
+        #New node to be inserted
+        new_node = Node(new)
+        #If node is tail, use the push_back method
+        if node.next == None:
+            push_back(new)
+        else:
+            node.next.prev = new_node
+            node.next = new_node
