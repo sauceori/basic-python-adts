@@ -37,5 +37,107 @@ class List:
     interior nodes can be accessed or modified.
     """
     def __init__(self):
+        """Constructor for a linked list.
+
+        Arguments:
+        self -- reference to the node being constructed
+        """
+
         self.head = None
         self.tail = None
+
+    def push_front(self, new):
+        """Adds a new node at the front of the list, replacing the head node.
+
+        Arguments:
+        self -- reference to this list instance
+        new -- data value for the new node
+        """
+        pass
+
+    def top_front(self):
+        """Returns the value at the front of the list.
+
+        Arguments:
+        self -- reference to this list instance
+        """
+        pass
+
+    def pop_front(self):
+        """Removes the front item and returns its data.
+
+        Arguments:
+        self -- reference to this list instance
+        """
+        pass
+
+    def push_back(self, new):
+        """Adds a new node at the back of the list, replacing the tail node.
+
+        Arguments:
+        self -- reference to this list instance
+        new -- data value for the new node
+        """
+        pass
+
+    def top_back(self):
+        """Returns the value at the end of the list.
+
+        Arguments:
+        self -- reference to this list instance
+        """
+        pass
+
+    def pop_back(self):
+        """Removes the front item and returns its data.
+
+        Arguments:
+        self -- reference to this list instance
+        """
+        pass
+
+    def find(self, key):
+        """Returns true if the key is in the list, else false.
+
+        Arguments:
+        self -- reference to this list instance
+        key -- the value to be searched for in the list
+        """
+        pass
+
+    def erase(self, key):
+        """Removes the first instance of the key fron the list, if it exists.
+
+        Arguments:
+        self -- reference to this list instance
+        key -- the value to be removed from the list
+        """
+        pass
+
+    def empty(self):
+        """Returns true if the list is empty, else false.
+
+        Arguments:
+        self -- reference to this list instance
+        """
+        pass
+
+    def add_before(self, node, new):
+        """Inserts a node containing new before a given node.
+
+        Arguments:
+        self -- reference to this list instance
+        node -- the node before which new is inserted
+        new -- data value for the new node
+        """
+        pass
+
+    def add_after(self, node, new):
+        """Inserts a node containing new after a given node.
+
+        Arguments:
+        self -- reference to this list instance
+        node -- the node before which new is inserted
+        new -- data value for the new node
+        """
+        pass
