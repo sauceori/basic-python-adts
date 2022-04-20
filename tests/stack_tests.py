@@ -24,7 +24,18 @@ class StackTester(unittest.TestCase):
         Case: When multiple items are pushed onto the stack, the most recently
         added item should be at the top of the stack.
         """
-        pass
+
+        #Expected value at the top of the stack
+        expected = "/home/ethan/Music"
+
+        #Actual stack for which push is called
+        self.stack.push("/home/ethan/Documents")
+        self.stack.push("/home/ethan/Downloads")
+        self.stack.push("/home/ethan/Music")
+        actual = self.stack.top()
+
+        #Assert expected and actual are the same string
+        assertEqual(actual, expected)
 
     def test_top(self):
         """Tests the top method in the stack class.
@@ -34,7 +45,17 @@ class StackTester(unittest.TestCase):
         Case: When multiple items are in the stack, the most recently added
         item should be returned by top.
         """
-        pass
+
+        #Expected value at the top of the stack
+        expected = "/home/ethan/Templates"
+
+        #Actual stack on which top is called
+        self.stack.push("/home/ethan/Desktop")
+        self.stack.push("/home/ethan/Public")
+        self.stack.push("/home/ethan/Templates")
+
+        #Assert expected and actual are the same string
+        assertEqual(self.stack.top(), expected)
 
     def test_pop(self):
         """Tests the pop method in the stack class.
@@ -44,7 +65,18 @@ class StackTester(unittest.TestCase):
         Case: When multiple items are on the stack, pop should remove and
         return the most recently added one.
         """
-        pass
+
+        #Expected value to be popped from the stack
+        expected = "/home/ethan/Videos"
+
+        #Actual stack with which to test pop
+        self.stack.push("/home/ethan/Pictures")
+        self.stack.push("/home/ethan/Games")
+        self.stack.push("/home/ethan/Videos")
+        actual = self.stack.pop()
+
+        #Assert that the top item was returned by pop
+        assertEqual(actual, expected)
 
     def test_empty(self):
         """Tests the empty method in the stack class.
@@ -54,7 +86,15 @@ class StackTester(unittest.TestCase):
         Case: Empty called on a newly instantiated stack should return true,
         and then false once an item as been pushed onto it.
         """
-        pass
+
+        #Stack should be empty before item is pushed
+        self.assertTrue(self.stack.empty())
+
+        #Push an item
+        self.stack.push("/home")
+
+        #Assert that the stack is no longer empty
+        self.assertFalse(self.stack.empty())
 
 if __name__ == '__main__':
     unittest.main()
