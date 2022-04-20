@@ -83,11 +83,14 @@ class List:
             #Get the data from the old head
             data = self.head.data
 
-            #Update the head pointer
-            self.head = self.head.next
-
-            #Remove the new head's pointer to the old one
-            self.head.prev = None
+            #Update the head pointer if there are other nodes
+            if self.head.next != None:
+                self.head = self.head.next
+                #Remove the new head's pointer to the old one
+                self.head.prev = None
+            #Remove the head pointer if it is the only element
+            else:
+                self.head = None
 
             #Return the old head data
             return data
@@ -130,11 +133,14 @@ class List:
             #Get the data from the old tail
             data = self.tail.data
 
-            #Update the tail pointer
-            self.tail = self.tail.prev
-
-            #Remove the new tail's pointer to the old one
-            self.tail.next = None
+            #Update the tail pointer if there are other nodes
+            if self.tail.prev != None:
+                self.tail = self.tail.prev
+                #Remove the new tail's pointer to the old one
+                self.tail.next = None
+            #Remove the tail pointer if it is the only element
+            else:
+                self.tail = None
 
             #Return the old tail data
             return data

@@ -23,7 +23,7 @@ class Stack:
         """Constructor for a stack.
 
         Arguments:
-        self -- reference to the node being constructed
+        self -- reference to the stack being constructed
         """
         self.stack = List()
 
@@ -31,7 +31,8 @@ class Stack:
         """Adds new to the top of the stack.
 
         Arguments:
-        self -- reference to the node being constructed
+        self -- reference to this stack instance
+        new -- data to be pushed onto the stack
         """
         self.stack.push_back(new)
 
@@ -39,7 +40,7 @@ class Stack:
         """Returns the item at the top of the stack
 
         Arguments:
-        self -- reference to the node being constructed
+        self -- reference to this stack instance
         """
         return self.stack.top_back()
 
@@ -47,7 +48,7 @@ class Stack:
         """Removes the item at the top of the stack, returns it.
 
         Arguments:
-        self -- reference to the node being constructed
+        self -- reference to this stack instance
         """
         return self.stack.pop_back()
 
@@ -55,6 +56,6 @@ class Stack:
         """Returns true if the stack is empty, else false.
 
         Arguments:
-        self -- reference to the node being constructed
+        self -- reference to this stack instance
         """
         return self.stack.empty()

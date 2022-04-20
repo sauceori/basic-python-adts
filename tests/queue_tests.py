@@ -35,7 +35,7 @@ class QueueTester(unittest.TestCase):
         actual = self.queue.dequeue()
 
         #Assert that the returned value is as expected
-        assertEqual(actual, expected)
+        self.assertEqual(actual, expected)
 
     def test_dequeue(self):
         """Tests the dequeue method in the Queue class.
@@ -57,7 +57,7 @@ class QueueTester(unittest.TestCase):
         self.queue.dequeue()
 
         #After three enqueues and three dequeues, queue should be empty
-        assertFalse(self.queue.empty())
+        self.assertTrue(self.queue.empty())
 
     def test_empty(self):
         """Tests the empty method in the Queue class.
