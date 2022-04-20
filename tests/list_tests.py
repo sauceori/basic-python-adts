@@ -10,8 +10,7 @@ import unittest
 from adts.list import List
 
 class ListTester(unittest.TestCase):
-    """Contains the unit tests for the public interface of a linked list.
-    """
+    """Contains the unit tests for the public interface of a linked list."""
 
     #Setup runs before each test
     def setUp(self):
