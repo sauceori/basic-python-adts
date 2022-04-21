@@ -37,6 +37,11 @@ some bugs and get my interface methods to better mesh with the test suite I had 
 When all the ADTs had been written and their tests came back ok, I wrote up some use-case scenarios
 for the data structures to create acceptance tests that showcase as much of their functionality as
 possible and added these tests to the end of the corresponding modules in the test package.
+    After writing all of my ADTs, ensuring they passed my test harness, and writing acceptance
+tests for them I performed some code cleanup and other minor improvements. This included: improving
+the encapsulation of the Node and List classes, updating my test suites to reflect these changes,
+minor improvements to documentation and tests, and adding new comments where I noticed they were
+lacking. Finally, I generated new .html docs to reflect the changed I had made.
     I based the public interfaces of my ADTs on these three videos from UC San Diego on
 linked-lists, stacks, and queues. I had recently seen these videos when I was brushing up on my
 knowledge of data structures and implementing them in C, so they seemed like a good fit for this
@@ -50,11 +55,23 @@ The tests package contains modules which correspond to the list, stack, and queu
 unit tests which check interface methods on an individual basis and acceptance tests which use
 use-case scenarios to confirm more general functionality for these ADTs. These tests can all be run
 sequentially using the test.sh shell script in the base of the project directory.
+    The acceptance test I wrote for my list ADT demonstrates how the list could be used to keep
+track of families waiting in line with a FastPass system for an amusement park ride. I chose this
+to be my example to showcase how the doubly linked list interface contrasts with stacks in queues,
+particularly in the way that nodes can be inserted at the front, back, or in the middle of the
+list (in the case that someone decides to leave the line.)
+    For my Stack ADT my acceptance test shows how stacks are used in programs with "undo" features.
+In my example, a very simple version control system allows its users to remove their most recent
+changes if they are unhappy with them, popping the names of the edited files off of the stack.
+    My queue ADT's acceptance test uses an automatic telemarketer as an example, numbers are fed to
+the system and removed after it attempts the phone call. I thought this did a good job of
+illustrating a use-case for FIFO priority structures, as the telemarketer simply attempts a call
+for every number that it receives to maintain throughput.
 
 DOCUMENTATION
-For this project I documented my code with pydoc docstrings, the documentation in .html formis
-available in the docs directory in the root of the project folder and can be generated again if
-changes are introduced by running the docs.sh script in the same location. I referenced the
-following style guides for more general style and pydoc docstring conventions:
+For this project I documented my code with pydoc docstrings throughout, the documentation in .html
+format is available in the docs directory in the root of the project folder and can be generated
+again if changes are introduced by running the docs.sh script in the same location. I referenced
+the following style guides for more general style and pydoc docstring conventions:
 Style: https://peps.python.org/pep-0008/
 Pydoc: https://peps.python.org/pep-0257/
