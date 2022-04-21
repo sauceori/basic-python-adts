@@ -11,6 +11,14 @@ list.py is an implementation of a doubly linked list, which was used as the unde
 for implementing the queue and stack ADTs as they conveniently share interface features with my
 linked list.
 
+PROJECT STRUCTURE
+/adts/      Contains source modules for my ADT implementations
+/docs/      Contains pydoc documentation for my ADTs and tests in .html format
+/tests/     Contains modules with my unit and acceptance test cases for the ADTs
+/docs.sh    Script which generates new documentation and places it in /docs/
+/README.txt Contains information explaining my project
+/test.sh    Script which runs test cases on my ADT modules
+
 DEVELOPMENT PROCESS
 Starting out, I figured that I would write my list implementation first, since stacks and queues
 can be easily implemented using linked lists that meant I could spend less time writing error-prone
