@@ -79,7 +79,7 @@ class List:
         Arguments:
         self -- reference to this list instance
         """
-        if self.head is not None:
+        if self.head != None:
             #Get the data from the old head
             data = self.head.data
 
@@ -129,7 +129,7 @@ class List:
         Arguments:
         self -- reference to this list instance
         """
-        if self.tail is not None:
+        if self.tail != None:
             #Get the data from the old tail
             data = self.tail.data
 
@@ -155,7 +155,7 @@ class List:
         """
         #Iterate through the linked list to find key
         node = self.head
-        while node is not None:
+        while node != None:
             #If the node data and key match return true
             if node.data == key:
                 return True
