@@ -21,11 +21,11 @@ PROJECT STRUCTURE
 
 DEVELOPMENT PROCESS
 Starting out, I figured that I would write my list implementation first, since stacks and queues
-can be easily implemented using linked lists that meant I could spend less time writing error-prone
-code and more time testing the methods I write when creating the list ADT. I decided to go with a
-doubly-linked list because having constant-time access to both the head and tail confers some
-performance benefits, and makes writing certain methods easier even if it is more work having to
-manage a tail reference.
+can be easily implemented using linked lists that meant I could spend less time writing potentially
+error-prone code and more time testing the methods I write when creating the list ADT. I decided to
+go with a doubly-linked list because having constant-time access to both the head and tail confers
+some performance benefits, and makes writing certain methods easier even if it is more work having
+to manage a tail reference.
     For each of the ADTs, I began by first creating the unit test stubs that would form my test
 harness and correspond with the methods in my ADTs public interface. I documented each of these
 stubs with the expectations for the method I would later implement as part of the corresponding ADT
