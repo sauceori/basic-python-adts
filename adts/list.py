@@ -124,7 +124,7 @@ class List:
             return self.tail.data
 
     def pop_back(self):
-        """Removes the front item and returns its data.
+        """Removes the back item and returns its data.
 
         Arguments:
         self -- reference to this list instance
@@ -138,8 +138,9 @@ class List:
                 self.tail = self.tail.prev
                 #Remove the new tail's pointer to the old one
                 self.tail.next = None
-            #Remove the tail pointer if it is the only element
+            #Remove the head and tail pointer if it is the only element
             else:
+                self.head = None
                 self.tail = None
 
             #Return the old tail data
@@ -193,6 +194,7 @@ class List:
         """
         if self.head == None:
             return True
+        return False
 
     def add_before(self, node, new):
         """Inserts a node containing new before a given node.

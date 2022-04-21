@@ -96,5 +96,40 @@ class StackTester(unittest.TestCase):
         #Assert that the stack is no longer empty
         self.assertFalse(self.stack.empty())
 
+    def test_undo(self):
+        """Acceptance test for the Stack class.
+
+        An incredibly simple version-control system works like the undo button
+        in a GUI driven program: changes to files are placed on a stack by
+        their file paths, if the user decides they don't like their most recent
+        changes they can be popped off the stack to remove those changes from
+        staging. An "undo all" button simply pops file paths off the stack
+        until there are none left.
+        """
+
+        #User is notified changes to /src/main.py have been staged
+        self.stack.push("/src/main.py")
+        print("Changes to " + self.stack.top() + " staged")
+
+        #User is notified changes to /src/functions.py have been staged
+        self.stack.push("/src/functions.py")
+        print("Changes to " + self.stack.top() + " staged")
+
+        #User undoes their additions to functions.py
+        removed = self.stack.pop()
+        print("Changes to " + removed + " reverted")
+
+        #User is notified changes to /src/tests.py have been staged
+        self.stack.push("/src/tests.py")
+        print("Changes to " + self.stack.top() + " staged")
+
+        #User accidently hits the undo all button and loses all their work!
+        while self.stack.empty() == False:
+            removed = self.stack.pop()
+            print("Changes to " + removed + " reverted")
+
+        #At this point the staging branch is empty
+        self.assertTrue(self.stack.empty())
+
 if __name__ == '__main__':
     unittest.main()
