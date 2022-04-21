@@ -93,8 +93,24 @@ class List:
         Arguments:
         self -- reference to the node being constructed
         """
-        self.head = None
-        self.tail = None
+        self._head = None
+        self._tail = None
+
+    def get_head(self):
+        """Accessor for the head of the linked list.
+
+        Arguments:
+        self -- reference to this list instance
+        """
+        return self._head
+
+    def get_tail(self):
+        """Accessor for the tail of the linked list.
+
+        Arguments:
+        self -- reference to this list instance
+        """
+        return self._tail
 
     def push_front(self, new):
         """Adds a new node at the front of the list, replacing the head node.
@@ -105,15 +121,15 @@ class List:
         """
         #Node to be added to the list
         new_node = Node(new)
-        new_node.set_next(self.head)
+        new_node.set_next(self._head)
         #If the list is empty, then this is the first node
-        if self.head == None:
-            self.head = new_node
-            self.tail = new_node
+        if self._head == None:
+            self._head = new_node
+            self._tail = new_node
         #Else new node becomes prev to current head, then the new head
         else:
-            self.head.set_prev(new_node)
-            self.head = new_node
+            self._head.set_prev(new_node)
+            self._head = new_node
 
     def top_front(self):
         """Returns the value at the front of the list.
@@ -121,8 +137,8 @@ class List:
         Arguments:
         self -- reference to this list instance
         """
-        if self.head != None:
-            return self.head.get_data()
+        if self._head != None:
+            return self._head.get_data()
 
     def pop_front(self):
         """Removes the head and returns its data.
@@ -130,18 +146,18 @@ class List:
         Arguments:
         self -- reference to this list instance
         """
-        if self.head != None:
+        if self._head != None:
             #Get the data from the old head
-            data = self.head.get_data()
+            data = self._head.get_data()
 
             #Update the head pointer if there are other nodes
-            if self.head.get_next() != None:
-                self.head = self.head.get_next()
+            if self._head.get_next() != None:
+                self._head = self._head.get_next()
                 #Remove the new head's pointer to the old one
-                self.head.set_prev(None)
+                self._head.set_prev(None)
             #Remove the head pointer if it is the only element
             else:
-                self.head = None
+                self._head = None
 
             #Return the old head data
             return data
@@ -155,15 +171,15 @@ class List:
         """
         #Node to be added to the list
         new_node = Node(new)
-        new_node.set_prev(self.tail)
+        new_node.set_prev(self._tail)
         #If the list is empty, then this is the first node
-        if self.head == None:
-            self.head = new_node
-            self.tail = new_node
+        if self._head == None:
+            self._head = new_node
+            self._tail = new_node
         #Else new node becomes next to current tail, then new tail
         else:
-            self.tail.set_next(new_node)
-            self.tail = new_node
+            self._tail.set_next(new_node)
+            self._tail = new_node
 
     def top_back(self):
         """Returns the value at the end of the list.
@@ -171,8 +187,8 @@ class List:
         Arguments:
         self -- reference to this list instance
         """
-        if self.tail != None:
-            return self.tail.get_data()
+        if self._tail != None:
+            return self._tail.get_data()
 
     def pop_back(self):
         """Removes the back item and returns its data.
@@ -180,19 +196,19 @@ class List:
         Arguments:
         self -- reference to this list instance
         """
-        if self.tail != None:
+        if self._tail != None:
             #Get the data from the old tail
-            data = self.tail.get_data()
+            data = self._tail.get_data()
 
             #Update the tail pointer if there are other nodes
-            if self.tail.get_prev() != None:
-                self.tail = self.tail.get_prev()
+            if self._tail.get_prev() != None:
+                self._tail = self._tail.get_prev()
                 #Remove the new tail's pointer to the old one
-                self.tail.set_next(None)
+                self._tail.set_next(None)
             #Remove the head and tail pointer if it is the only element
             else:
-                self.head = None
-                self.tail = None
+                self._head = None
+                self._tail = None
 
             #Return the old tail data
             return data
@@ -205,7 +221,7 @@ class List:
         key -- the value to be searched for in the list
         """
         #Iterate through the linked list to find key
-        node = self.head
+        node = self._head
         while node != None:
             #If the node data and key match return true
             if node.get_data() == key:
@@ -222,7 +238,7 @@ class List:
         key -- the value to be removed from the list
         """
         #Iterate through the linked list to find key
-        node = self.head
+        node = self._head
         while node != None and node.get_data() != key:
             node = node.get_next()
 
@@ -245,7 +261,7 @@ class List:
         Arguments:
         self -- reference to this list instance
         """
-        if self.head == None:
+        if self._head == None:
             return True
         return False
 
@@ -297,7 +313,7 @@ class List:
         Arguments:
         self -- reference to this list instance
         """
-        node = self.head
+        node = self._head
         while node != None:
             print(node.get_data())
             node = node.get_next()
@@ -339,8 +355,8 @@ def main():
         print("top_back works!")
 
     #Check head and tail
-    print("Current head: " + str(list.head.get_data()))
-    print("Current tail: " + str(list.tail.get_data()))
+    print("Current head: " + str(list._head.get_data()))
+    print("Current tail: " + str(list._tail.get_data()))
 
     #Test pop_back
     if list.pop_back() == 5:
@@ -358,7 +374,7 @@ def main():
         print("erase works!")
 
     #Test add_before
-    node = list.head
+    node = list._head
     while node.get_data() != 4:
         node = node.get_next()
     list.add_before(node, 3)

@@ -32,7 +32,7 @@ class ListTester(unittest.TestCase):
         #Actual list for which push_front is called
         for x in range(6):
             self.list.push_front(x)
-        actual = self.list.head.get_data()
+        actual = self.list.get_head().get_data()
 
         #Assert expected and the head of actual are equal
         self.assertEqual(actual, expected)
@@ -55,7 +55,7 @@ class ListTester(unittest.TestCase):
         alphabet = "abcdefghijklmnopqrstuvwxyz"
         for letter in alphabet:
             self.list.push_front(letter)
-        actual = self.list.head
+        actual = self.list.get_head()
 
         #Assert that the node at the head is as expected
         self.assertEqual(actual.get_data(), expected_data)
@@ -81,7 +81,7 @@ class ListTester(unittest.TestCase):
         for day in week:
             self.list.push_front(day)
         actual_old = self.list.pop_front()
-        actual_new = self.list.head.get_data()
+        actual_new = self.list.get_head().get_data()
 
         #Assert the data at the new and old head is as expected
         self.assertEqual(actual_old, expected_old)
@@ -104,7 +104,7 @@ class ListTester(unittest.TestCase):
         year = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec']
         for month in year:
             self.list.push_back(month)
-        actual = self.list.tail.get_prev().get_next().get_data()
+        actual = self.list.get_tail().get_prev().get_next().get_data()
         #actual = self.list.tail.prev.next.data
 
         #Assert the tail is as expected
@@ -127,7 +127,7 @@ class ListTester(unittest.TestCase):
         for x in range(6):
             self.list.push_back(x)
         actual_data = self.list.top_back()
-        actual_next = self.list.tail.get_next()
+        actual_next = self.list.get_tail().get_next()
 
         #Assert the node at the tail is as expected
         self.assertEqual(actual_data, expected_data)
@@ -153,7 +153,7 @@ class ListTester(unittest.TestCase):
         for letter in alphabet:
             self.list.push_back(letter)
         actual_old = self.list.pop_back()
-        actual_new = self.list.tail.get_data()
+        actual_new = self.list.get_tail().get_data()
 
         #Assert the data at the new and old tail are as expected
         self.assertEqual(actual_old, expected_old)
@@ -205,8 +205,8 @@ class ListTester(unittest.TestCase):
 
         #Call the erase function on the list
         self.list.erase('jan')
-        actual_head = self.list.head.get_data()
-        actual_tail = self.list.tail.get_data()
+        actual_head = self.list.get_head().get_data()
+        actual_tail = self.list.get_tail().get_data()
 
         #Assert that the head is 'feb' after having removed the old 'jan'
         self.assertEqual(actual_head, expected_head)
@@ -249,11 +249,11 @@ class ListTester(unittest.TestCase):
 
         #Actual list
         self.list.push_back(1)
-        self.list.add_before(self.list.head, 0)
+        self.list.add_before(self.list.get_head(), 0)
 
         #Actual head and tail values
-        actual_head = self.list.head.get_data()
-        actual_tail = self.list.tail.get_data()
+        actual_head = self.list.get_head().get_data()
+        actual_tail = self.list.get_tail().get_data()
 
         #Assert that the head and tail values are as expected
         self.assertEqual(actual_head, expected_head)
@@ -276,11 +276,11 @@ class ListTester(unittest.TestCase):
 
         #Actual list
         self.list.push_back(0)
-        self.list.add_after(self.list.head, 1)
+        self.list.add_after(self.list.get_head(), 1)
 
         #Actual head and tail values
-        actual_head = self.list.head.get_data()
-        actual_tail = self.list.tail.get_data()
+        actual_head = self.list.get_head().get_data()
+        actual_tail = self.list.get_tail().get_data()
 
         #Assert that the head and tail values are as expected
         self.assertEqual(actual_head, expected_head)
@@ -307,7 +307,7 @@ class ListTester(unittest.TestCase):
         self.list.push_front("Smith")
 
         #The Wittkowski family lets the Hernandez family take their place in line before leaving
-        family = self.list.head
+        family = self.list.get_head()
         while family.get_data() != "Wittkowski":
             family = family.get_next()
         self.list.add_before(family, "Hernandez")
