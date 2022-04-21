@@ -97,7 +97,7 @@ class List:
         self._tail = None
 
     def get_head(self):
-        """Accessor for the head of the linked list.
+        """Accessor for the head node of the linked list.
 
         Arguments:
         self -- reference to this list instance
@@ -105,7 +105,7 @@ class List:
         return self._head
 
     def get_tail(self):
-        """Accessor for the tail of the linked list.
+        """Accessor for the tail node of the linked list.
 
         Arguments:
         self -- reference to this list instance
@@ -249,11 +249,11 @@ class List:
                 self.pop_front()
             elif node.get_next() == None:
                 self.pop_back()
+            #If the node in inbetween two others, update the next and prev
+            #pointers of those two nodes
             else:
                 node.get_prev().set_next(node.get_next())
-                #node.prev.next = node.next
                 node.get_next().set_prev(node.get_prev())
-                #node.next.prev = node.prev
 
     def empty(self):
         """Returns true if the list is empty, else false.
@@ -280,11 +280,11 @@ class List:
         #If node is head, use the push_front method
         if node.get_prev() == None:
             self.push_front(new)
+        #If the new node is inserted in the middle of the list, change the next
+        #and prev pointers of the adjacent nodes
         else:
             node.get_prev().set_next(new_node)
-            #node.prev.next = new_node
             node.set_prev(new_node)
-            #node.prev = new_node
 
     def add_after(self, node, new):
         """Inserts a node containing new after a given node.
@@ -301,11 +301,11 @@ class List:
         #If node is tail, use the push_back method
         if node.get_next() == None:
             self.push_back(new)
+        #If the new node is inserted in the middle of the list, change the next
+        #and prev pointers of the adjacent nodes
         else:
             node.get_next().set_prev(new_node)
-            #node.next.prev = new_node
             node.set_next(new_node)
-            #node.next = new_node
 
     def print_list(self):
         """Prints all elements in the list.
@@ -313,6 +313,7 @@ class List:
         Arguments:
         self -- reference to this list instance
         """
+        #Traverse the list, printing the data in each node
         node = self._head
         while node != None:
             print(node.get_data())

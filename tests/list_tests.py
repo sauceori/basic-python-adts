@@ -55,11 +55,12 @@ class ListTester(unittest.TestCase):
         alphabet = "abcdefghijklmnopqrstuvwxyz"
         for letter in alphabet:
             self.list.push_front(letter)
-        actual = self.list.get_head()
+        actual_data = self.list.top_front()
+        actual_prev = self.list.get_head().get_prev()
 
         #Assert that the node at the head is as expected
-        self.assertEqual(actual.get_data(), expected_data)
-        self.assertEqual(actual.get_prev(), expected_prev)
+        self.assertEqual(actual_data, expected_data)
+        self.assertEqual(actual_prev, expected_prev)
 
     def test_pop_front(self):
         """Tests the pop_front method in the list class.
@@ -104,8 +105,8 @@ class ListTester(unittest.TestCase):
         year = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec']
         for month in year:
             self.list.push_back(month)
+        #Messy line, but checks if the node next to tail points to it
         actual = self.list.get_tail().get_prev().get_next().get_data()
-        #actual = self.list.tail.prev.next.data
 
         #Assert the tail is as expected
         self.assertEqual(actual, expected)
@@ -231,6 +232,10 @@ class ListTester(unittest.TestCase):
 
         #The list now has an element, empty should return false
         self.assertFalse(self.list.empty())
+
+        #If the element is removed, empty should once again return true
+        self.list.pop_front()
+        self.assertTrue(self.list.empty())
 
     def test_add_before(self):
         """Tests the add_before method in the list class.
