@@ -86,6 +86,18 @@ top&nbsp;returns&nbsp;the&nbsp;item&nbsp;at&nbsp;the&nbsp;top&nbsp;of&nbsp;the&n
 Case:&nbsp;When&nbsp;multiple&nbsp;items&nbsp;are&nbsp;in&nbsp;the&nbsp;stack,&nbsp;the&nbsp;most&nbsp;recently&nbsp;added<br>
 item&nbsp;should&nbsp;be&nbsp;returned&nbsp;by&nbsp;top.</tt></dd></dl>
 
+<dl><dt><a name="StackTester-test_undo"><strong>test_undo</strong></a>(self)</dt><dd><tt>Acceptance&nbsp;test&nbsp;for&nbsp;the&nbsp;Stack&nbsp;class.<br>
+&nbsp;<br>
+An&nbsp;incredibly&nbsp;simple&nbsp;version-control&nbsp;system&nbsp;works&nbsp;like&nbsp;the&nbsp;undo&nbsp;button<br>
+in&nbsp;a&nbsp;GUI&nbsp;driven&nbsp;program:&nbsp;changes&nbsp;to&nbsp;files&nbsp;are&nbsp;placed&nbsp;on&nbsp;a&nbsp;stack&nbsp;by<br>
+their&nbsp;file&nbsp;paths,&nbsp;if&nbsp;the&nbsp;user&nbsp;decides&nbsp;they&nbsp;don't&nbsp;like&nbsp;their&nbsp;most&nbsp;recent<br>
+changes&nbsp;they&nbsp;can&nbsp;be&nbsp;popped&nbsp;off&nbsp;the&nbsp;stack&nbsp;to&nbsp;remove&nbsp;those&nbsp;changes&nbsp;from<br>
+staging.&nbsp;An&nbsp;"undo&nbsp;all"&nbsp;button&nbsp;simply&nbsp;pops&nbsp;file&nbsp;paths&nbsp;off&nbsp;the&nbsp;stack<br>
+until&nbsp;there&nbsp;are&nbsp;none&nbsp;left.<br>
+&nbsp;<br>
+Print&nbsp;statements&nbsp;in&nbsp;this&nbsp;test&nbsp;can&nbsp;be&nbsp;uncommented&nbsp;to&nbsp;see&nbsp;all&nbsp;the<br>
+interactions&nbsp;with&nbsp;the&nbsp;stack.</tt></dd></dl>
+
 <hr>
 Methods inherited from <a href="unittest.case.html#TestCase">unittest.case.TestCase</a>:<br>
 <dl><dt><a name="StackTester-__call__"><strong>__call__</strong></a>(self, *args, **kwds)</dt><dd><tt>Call&nbsp;self&nbsp;as&nbsp;a&nbsp;function.</tt></dd></dl>
@@ -392,7 +404,7 @@ the&nbsp;specified&nbsp;test&nbsp;method's&nbsp;docstring.</tt></dd></dl>
 
 <dl><dt><a name="StackTester-skipTest"><strong>skipTest</strong></a>(self, reason)</dt><dd><tt>Skip&nbsp;this&nbsp;test.</tt></dd></dl>
 
-<dl><dt><a name="StackTester-subTest"><strong>subTest</strong></a>(self, msg=&lt;object object at 0x7fae1ef90a70&gt;, **params)</dt><dd><tt>Return&nbsp;a&nbsp;context&nbsp;manager&nbsp;that&nbsp;will&nbsp;return&nbsp;the&nbsp;enclosed&nbsp;block<br>
+<dl><dt><a name="StackTester-subTest"><strong>subTest</strong></a>(self, msg=&lt;object object at 0x7f715bb34a70&gt;, **params)</dt><dd><tt>Return&nbsp;a&nbsp;context&nbsp;manager&nbsp;that&nbsp;will&nbsp;return&nbsp;the&nbsp;enclosed&nbsp;block<br>
 of&nbsp;code&nbsp;in&nbsp;a&nbsp;subtest&nbsp;identified&nbsp;by&nbsp;the&nbsp;optional&nbsp;message&nbsp;and<br>
 keyword&nbsp;parameters.&nbsp;&nbsp;A&nbsp;failure&nbsp;in&nbsp;the&nbsp;subtest&nbsp;marks&nbsp;the&nbsp;test<br>
 case&nbsp;as&nbsp;failed&nbsp;but&nbsp;resumes&nbsp;execution&nbsp;at&nbsp;the&nbsp;end&nbsp;of&nbsp;the&nbsp;enclosed<br>

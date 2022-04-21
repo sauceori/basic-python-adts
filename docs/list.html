@@ -85,7 +85,17 @@ Arguments:<br>
 self&nbsp;--&nbsp;reference&nbsp;to&nbsp;this&nbsp;list&nbsp;instance<br>
 key&nbsp;--&nbsp;the&nbsp;value&nbsp;to&nbsp;be&nbsp;searched&nbsp;for&nbsp;in&nbsp;the&nbsp;list</tt></dd></dl>
 
-<dl><dt><a name="List-pop_back"><strong>pop_back</strong></a>(self)</dt><dd><tt>Removes&nbsp;the&nbsp;front&nbsp;item&nbsp;and&nbsp;returns&nbsp;its&nbsp;data.<br>
+<dl><dt><a name="List-get_head"><strong>get_head</strong></a>(self)</dt><dd><tt>Accessor&nbsp;for&nbsp;the&nbsp;head&nbsp;node&nbsp;of&nbsp;the&nbsp;linked&nbsp;list.<br>
+&nbsp;<br>
+Arguments:<br>
+self&nbsp;--&nbsp;reference&nbsp;to&nbsp;this&nbsp;list&nbsp;instance</tt></dd></dl>
+
+<dl><dt><a name="List-get_tail"><strong>get_tail</strong></a>(self)</dt><dd><tt>Accessor&nbsp;for&nbsp;the&nbsp;tail&nbsp;node&nbsp;of&nbsp;the&nbsp;linked&nbsp;list.<br>
+&nbsp;<br>
+Arguments:<br>
+self&nbsp;--&nbsp;reference&nbsp;to&nbsp;this&nbsp;list&nbsp;instance</tt></dd></dl>
+
+<dl><dt><a name="List-pop_back"><strong>pop_back</strong></a>(self)</dt><dd><tt>Removes&nbsp;the&nbsp;back&nbsp;item&nbsp;and&nbsp;returns&nbsp;its&nbsp;data.<br>
 &nbsp;<br>
 Arguments:<br>
 self&nbsp;--&nbsp;reference&nbsp;to&nbsp;this&nbsp;list&nbsp;instance</tt></dd></dl>
@@ -152,6 +162,39 @@ this&nbsp;node&nbsp;from&nbsp;one&nbsp;in&nbsp;a&nbsp;singly-linked&nbsp;list.<b
 Arguments:<br>
 self&nbsp;--&nbsp;reference&nbsp;to&nbsp;the&nbsp;node&nbsp;being&nbsp;constructed<br>
 data&nbsp;--&nbsp;the&nbsp;value&nbsp;to&nbsp;be&nbsp;put&nbsp;in&nbsp;the&nbsp;node&nbsp;(default&nbsp;None)</tt></dd></dl>
+
+<dl><dt><a name="Node-get_data"><strong>get_data</strong></a>(self)</dt><dd><tt>Accessor&nbsp;for&nbsp;the&nbsp;internal&nbsp;data&nbsp;variable.<br>
+&nbsp;<br>
+Arguments:<br>
+self&nbsp;--&nbsp;reference&nbsp;to&nbsp;this&nbsp;node&nbsp;instance</tt></dd></dl>
+
+<dl><dt><a name="Node-get_next"><strong>get_next</strong></a>(self)</dt><dd><tt>Accessor&nbsp;for&nbsp;the&nbsp;internal&nbsp;next&nbsp;variable.<br>
+&nbsp;<br>
+Arguments:<br>
+self&nbsp;--&nbsp;reference&nbsp;to&nbsp;this&nbsp;node&nbsp;instance</tt></dd></dl>
+
+<dl><dt><a name="Node-get_prev"><strong>get_prev</strong></a>(self)</dt><dd><tt>Accessor&nbsp;for&nbsp;the&nbsp;internal&nbsp;prev&nbsp;variable.<br>
+&nbsp;<br>
+Arguments:<br>
+self&nbsp;--&nbsp;reference&nbsp;to&nbsp;this&nbsp;node&nbsp;instance</tt></dd></dl>
+
+<dl><dt><a name="Node-set_data"><strong>set_data</strong></a>(self, new)</dt><dd><tt>Mutator&nbsp;for&nbsp;the&nbsp;internal&nbsp;data&nbsp;variable.<br>
+&nbsp;<br>
+Arguments:<br>
+self&nbsp;--&nbsp;reference&nbsp;to&nbsp;this&nbsp;node&nbsp;instance<br>
+new&nbsp;--&nbsp;new&nbsp;value&nbsp;to&nbsp;be&nbsp;assigned&nbsp;to&nbsp;data</tt></dd></dl>
+
+<dl><dt><a name="Node-set_next"><strong>set_next</strong></a>(self, new)</dt><dd><tt>Mutator&nbsp;for&nbsp;the&nbsp;internal&nbsp;next&nbsp;variable.<br>
+&nbsp;<br>
+Arguments:<br>
+self&nbsp;--&nbsp;reference&nbsp;to&nbsp;this&nbsp;node&nbsp;instance<br>
+new&nbsp;--&nbsp;new&nbsp;value&nbsp;to&nbsp;be&nbsp;assigned&nbsp;to&nbsp;next</tt></dd></dl>
+
+<dl><dt><a name="Node-set_prev"><strong>set_prev</strong></a>(self, new)</dt><dd><tt>Mutator&nbsp;for&nbsp;the&nbsp;internal&nbsp;prev&nbsp;variable.<br>
+&nbsp;<br>
+Arguments:<br>
+self&nbsp;--&nbsp;reference&nbsp;to&nbsp;this&nbsp;node&nbsp;instance<br>
+new&nbsp;--&nbsp;new&nbsp;value&nbsp;to&nbsp;be&nbsp;assigned&nbsp;to&nbsp;prev</tt></dd></dl>
 
 <hr>
 Data descriptors defined here:<br>

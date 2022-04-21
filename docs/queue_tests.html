@@ -78,6 +78,17 @@ Adds&nbsp;a&nbsp;new&nbsp;element&nbsp;to&nbsp;the&nbsp;back&nbsp;of&nbsp;the&nb
 Case:&nbsp;When&nbsp;multiple&nbsp;items&nbsp;are&nbsp;queued,&nbsp;the&nbsp;most&nbsp;recently&nbsp;queued&nbsp;item<br>
 should&nbsp;be&nbsp;added&nbsp;at&nbsp;the&nbsp;end&nbsp;of&nbsp;the&nbsp;queue.</tt></dd></dl>
 
+<dl><dt><a name="QueueTester-test_phonebook"><strong>test_phonebook</strong></a>(self)</dt><dd><tt>Acceptance&nbsp;test&nbsp;for&nbsp;the&nbsp;Queue&nbsp;class.<br>
+&nbsp;<br>
+An&nbsp;automatic&nbsp;telemarketer&nbsp;gives&nbsp;a&nbsp;prerecorded&nbsp;phonecall&nbsp;to&nbsp;each&nbsp;new<br>
+number&nbsp;added&nbsp;to&nbsp;its&nbsp;"phonebook."&nbsp;The&nbsp;message&nbsp;is&nbsp;generic,&nbsp;so&nbsp;the&nbsp;only<br>
+information&nbsp;the&nbsp;system&nbsp;needs&nbsp;is&nbsp;the&nbsp;number&nbsp;to&nbsp;be&nbsp;called.&nbsp;The&nbsp;system<br>
+calls&nbsp;numbers&nbsp;in&nbsp;the&nbsp;queue&nbsp;until&nbsp;none&nbsp;are&nbsp;left&nbsp;on&nbsp;a&nbsp;first-come<br>
+first-serve&nbsp;basis,&nbsp;removing&nbsp;them&nbsp;as&nbsp;it&nbsp;goes.<br>
+&nbsp;<br>
+Print&nbsp;statements&nbsp;in&nbsp;this&nbsp;test&nbsp;can&nbsp;be&nbsp;uncommented&nbsp;to&nbsp;see&nbsp;all&nbsp;the<br>
+interactions&nbsp;with&nbsp;the&nbsp;queue.</tt></dd></dl>
+
 <hr>
 Methods inherited from <a href="unittest.case.html#TestCase">unittest.case.TestCase</a>:<br>
 <dl><dt><a name="QueueTester-__call__"><strong>__call__</strong></a>(self, *args, **kwds)</dt><dd><tt>Call&nbsp;self&nbsp;as&nbsp;a&nbsp;function.</tt></dd></dl>
@@ -384,7 +395,7 @@ the&nbsp;specified&nbsp;test&nbsp;method's&nbsp;docstring.</tt></dd></dl>
 
 <dl><dt><a name="QueueTester-skipTest"><strong>skipTest</strong></a>(self, reason)</dt><dd><tt>Skip&nbsp;this&nbsp;test.</tt></dd></dl>
 
-<dl><dt><a name="QueueTester-subTest"><strong>subTest</strong></a>(self, msg=&lt;object object at 0x7f9c96abca70&gt;, **params)</dt><dd><tt>Return&nbsp;a&nbsp;context&nbsp;manager&nbsp;that&nbsp;will&nbsp;return&nbsp;the&nbsp;enclosed&nbsp;block<br>
+<dl><dt><a name="QueueTester-subTest"><strong>subTest</strong></a>(self, msg=&lt;object object at 0x7fc1d03d8a70&gt;, **params)</dt><dd><tt>Return&nbsp;a&nbsp;context&nbsp;manager&nbsp;that&nbsp;will&nbsp;return&nbsp;the&nbsp;enclosed&nbsp;block<br>
 of&nbsp;code&nbsp;in&nbsp;a&nbsp;subtest&nbsp;identified&nbsp;by&nbsp;the&nbsp;optional&nbsp;message&nbsp;and<br>
 keyword&nbsp;parameters.&nbsp;&nbsp;A&nbsp;failure&nbsp;in&nbsp;the&nbsp;subtest&nbsp;marks&nbsp;the&nbsp;test<br>
 case&nbsp;as&nbsp;failed&nbsp;but&nbsp;resumes&nbsp;execution&nbsp;at&nbsp;the&nbsp;end&nbsp;of&nbsp;the&nbsp;enclosed<br>
