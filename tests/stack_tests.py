@@ -105,28 +105,31 @@ class StackTester(unittest.TestCase):
         changes they can be popped off the stack to remove those changes from
         staging. An "undo all" button simply pops file paths off the stack
         until there are none left.
+
+        Print statements in this test can be uncommented to see all the
+        interactions with the stack.
         """
 
         #User is notified changes to /src/main.py have been staged
         self.stack.push("/src/main.py")
-        print("Changes to " + self.stack.top() + " staged")
+        #print("Changes to " + self.stack.top() + " staged")
 
         #User is notified changes to /src/functions.py have been staged
         self.stack.push("/src/functions.py")
-        print("Changes to " + self.stack.top() + " staged")
+        #print("Changes to " + self.stack.top() + " staged")
 
         #User undoes their additions to functions.py
         removed = self.stack.pop()
-        print("Changes to " + removed + " reverted")
+        #print("Changes to " + removed + " reverted")
 
         #User is notified changes to /src/tests.py have been staged
         self.stack.push("/src/tests.py")
-        print("Changes to " + self.stack.top() + " staged")
+        #print("Changes to " + self.stack.top() + " staged")
 
         #User accidently hits the undo all button and loses all their work!
         while self.stack.empty() == False:
             removed = self.stack.pop()
-            print("Changes to " + removed + " reverted")
+            #print("Changes to " + removed + " reverted")
 
         #At this point the staging branch is empty
         self.assertTrue(self.stack.empty())

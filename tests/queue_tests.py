@@ -84,6 +84,9 @@ class QueueTester(unittest.TestCase):
         information the system needs is the number to be called. The system
         calls numbers in the queue until none are left on a first-come
         first-serve basis, removing them as it goes.
+
+        Print statements in this test can be uncommented to see all the
+        interactions with the queue.
         """
 
         #Add numbers to the system's "phonebook"
@@ -94,7 +97,7 @@ class QueueTester(unittest.TestCase):
         #The system forgets the numbers as it calls each one sequentially
         while self.queue.empty() == False:
             call_no = self.queue.dequeue()
-            print("Call Sent to " + call_no)
+            #print("Call Sent to " + call_no)
 
         #New numbers are fed to the system
         numbers = ["360-789-7698", "704-524-6530", "432-978-7038", "817-762-5518"]
@@ -104,7 +107,7 @@ class QueueTester(unittest.TestCase):
         #Call all the new numbers
         while self.queue.empty() == False:
             call_no = self.queue.dequeue()
-            print("Call Sent to " + call_no)
+            #print("Call Sent to " + call_no)
 
         #All numbers should be run through at this point
         self.assertTrue(self.queue.empty())

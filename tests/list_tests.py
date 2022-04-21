@@ -282,8 +282,43 @@ class ListTester(unittest.TestCase):
         actual_tail = self.list.tail.data
 
         #Assert that the head and tail values are as expected
-        self.assertEquals(actual_head, expected_head)
-        self.assertEquals(actual_tail, expected_tail)
+        self.assertEqual(actual_head, expected_head)
+        self.assertEqual(actual_tail, expected_tail)
+
+    def test_fastpass(self):
+        """Acceptance test for the List class.
+
+        An amusement park uses a FastPass system for the lines at its various
+        attractions, these lines are represented in the system using a linked
+        list data structure. When a family enters the line at the ride, their
+        last name is pushed to the back of the line. If a family has a FastPass
+        they can skip to the front of the line, and thus are pushed to the
+        front of the line. Three families are let onto the ride at a time.
+        """
+
+        #Add some new families to the end of the queue
+        self.list.push_back("Singh")
+        self.list.push_back("Brown")
+        self.list.push_back("Wittkowski")
+        self.list.push_back("Johnson")
+
+        #The Smith family has a FastPass and skips the line
+        self.list.push_front("Smith")
+
+        #The Wittkowski family lets the Hernandez family take their place in line before leaving
+        family = self.list.head
+        while family.data != "Wittkowski":
+            family = family.next
+        self.list.add_before(family, "Hernandez")
+        self.list.erase("Wittkowski")
+
+        #The ride lets a new group in, removing the first three in line
+        for x in range(3):
+            self.list.pop_front()
+
+        #The Hernandez and Johnson families are left waiting in line
+        self.assertEqual(self.list.top_front(), "Hernandez")
+        self.assertEqual(self.list.top_back(), "Johnson")
 
 if __name__ == '__main__':
     unittest.main()
