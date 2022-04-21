@@ -25,7 +25,7 @@ class Queue:
         Arguments:
         self -- reference to the queue being constructed
         """
-        self.queue = List()
+        self._queue = List()
 
     def enqueue(self, new):
         """Adds new to the back of the queue.
@@ -34,7 +34,7 @@ class Queue:
         self -- reference to this queue instance
         new -- data to be enqueued
         """
-        self.queue.push_back(new)
+        self._queue.push_back(new)
 
     def dequeue(self):
         """Removes and returns the item at the front of the queue.
@@ -42,7 +42,7 @@ class Queue:
         Arguments:
         self -- reference to this queue instance
         """
-        return self.queue.pop_front()
+        return self._queue.pop_front()
 
     def empty(self):
         """Returns true if the queue is empty, else false.
@@ -50,4 +50,4 @@ class Queue:
         Arguments:
         self -- reference to this queue instance
         """
-        return self.queue.empty()
+        return self._queue.empty()

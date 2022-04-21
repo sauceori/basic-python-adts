@@ -24,9 +24,60 @@ class Node:
         self -- reference to the node being constructed
         data -- the value to be put in the node (default None)
         """
-        self.data = data
-        self.prev = None
-        self.next = None
+        self._data = data
+        self._prev = None
+        self._next = None
+
+    def get_data(self):
+        """Accessor for the internal data variable.
+
+        Arguments:
+        self -- reference to this node instance
+        """
+        return self._data
+
+    def set_data(self, new):
+        """Mutator for the internal data variable.
+
+        Arguments:
+        self -- reference to this node instance
+        new -- new value to be assigned to data
+        """
+        self._data = new
+
+    def get_prev(self):
+        """Accessor for the internal prev variable.
+
+        Arguments:
+        self -- reference to this node instance
+        """
+        return self._prev
+
+    def set_prev(self, new):
+        """Mutator for the internal prev variable.
+
+        Arguments:
+        self -- reference to this node instance
+        new -- new value to be assigned to prev
+        """
+        self._prev = new
+
+    def get_next(self):
+        """Accessor for the internal next variable.
+
+        Arguments:
+        self -- reference to this node instance
+        """
+        return self._next
+
+    def set_next(self, new):
+        """Mutator for the internal next variable.
+
+        Arguments:
+        self -- reference to this node instance
+        new -- new value to be assigned to next
+        """
+        self._next = new
 
 class List:
     """Represents a doubly-linked list, and provides a public interface for it.
@@ -54,14 +105,14 @@ class List:
         """
         #Node to be added to the list
         new_node = Node(new)
-        new_node.next = self.head
+        new_node.set_next(self.head)
         #If the list is empty, then this is the first node
         if self.head == None:
             self.head = new_node
             self.tail = new_node
         #Else new node becomes prev to current head, then the new head
         else:
-            self.head.prev = new_node
+            self.head.set_prev(new_node)
             self.head = new_node
 
     def top_front(self):
@@ -71,7 +122,7 @@ class List:
         self -- reference to this list instance
         """
         if self.head != None:
-            return self.head.data
+            return self.head.get_data()
 
     def pop_front(self):
         """Removes the head and returns its data.
@@ -81,13 +132,13 @@ class List:
         """
         if self.head != None:
             #Get the data from the old head
-            data = self.head.data
+            data = self.head.get_data()
 
             #Update the head pointer if there are other nodes
-            if self.head.next != None:
-                self.head = self.head.next
+            if self.head.get_next() != None:
+                self.head = self.head.get_next()
                 #Remove the new head's pointer to the old one
-                self.head.prev = None
+                self.head.set_prev(None)
             #Remove the head pointer if it is the only element
             else:
                 self.head = None
@@ -104,14 +155,14 @@ class List:
         """
         #Node to be added to the list
         new_node = Node(new)
-        new_node.prev = self.tail
+        new_node.set_prev(self.tail)
         #If the list is empty, then this is the first node
         if self.head == None:
             self.head = new_node
             self.tail = new_node
         #Else new node becomes next to current tail, then new tail
         else:
-            self.tail.next = new_node
+            self.tail.set_next(new_node)
             self.tail = new_node
 
     def top_back(self):
@@ -121,7 +172,7 @@ class List:
         self -- reference to this list instance
         """
         if self.tail != None:
-            return self.tail.data
+            return self.tail.get_data()
 
     def pop_back(self):
         """Removes the back item and returns its data.
@@ -131,13 +182,13 @@ class List:
         """
         if self.tail != None:
             #Get the data from the old tail
-            data = self.tail.data
+            data = self.tail.get_data()
 
             #Update the tail pointer if there are other nodes
-            if self.tail.prev != None:
-                self.tail = self.tail.prev
+            if self.tail.get_prev() != None:
+                self.tail = self.tail.get_prev()
                 #Remove the new tail's pointer to the old one
-                self.tail.next = None
+                self.tail.set_next(None)
             #Remove the head and tail pointer if it is the only element
             else:
                 self.head = None
@@ -157,9 +208,9 @@ class List:
         node = self.head
         while node != None:
             #If the node data and key match return true
-            if node.data == key:
+            if node.get_data() == key:
                 return True
-            node = node.next
+            node = node.get_next()
         #If the key is never found in the list return false
         return False
 
@@ -172,19 +223,21 @@ class List:
         """
         #Iterate through the linked list to find key
         node = self.head
-        while node != None and node.data != key:
-            node = node.next
+        while node != None and node.get_data() != key:
+            node = node.get_next()
 
         #If the node data and key match remove the node and break
-        if node.data == key:
+        if node.get_data() == key:
             #Remove node from the list
-            if node.prev == None:
+            if node.get_prev() == None:
                 self.pop_front()
-            elif node.next == None:
+            elif node.get_next() == None:
                 self.pop_back()
             else:
-                node.prev.next = node.next
-                node.next.prev = node.prev
+                node.get_prev().set_next(node.get_next())
+                #node.prev.next = node.next
+                node.get_next().set_prev(node.get_prev())
+                #node.next.prev = node.prev
 
     def empty(self):
         """Returns true if the list is empty, else false.
@@ -206,14 +259,16 @@ class List:
         """
         #New node to be inserted
         new_node = Node(new)
-        new_node.prev = node.prev
-        new_node.next = node
+        new_node.set_prev(node.get_prev())
+        new_node.set_next(node)
         #If node is head, use the push_front method
-        if node.prev == None:
+        if node.get_prev() == None:
             self.push_front(new)
         else:
-            node.prev.next = new_node
-            node.prev = new_node
+            node.get_prev().set_next(new_node)
+            #node.prev.next = new_node
+            node.set_prev(new_node)
+            #node.prev = new_node
 
     def add_after(self, node, new):
         """Inserts a node containing new after a given node.
@@ -225,14 +280,16 @@ class List:
         """
         #New node to be inserted
         new_node = Node(new)
-        new_node.prev = node
-        new_node.next = node.next
+        new_node.set_prev(node)
+        new_node.set_next(node.get_next())
         #If node is tail, use the push_back method
-        if node.next == None:
+        if node.get_next() == None:
             self.push_back(new)
         else:
-            node.next.prev = new_node
-            node.next = new_node
+            node.get_next().set_prev(new_node)
+            #node.next.prev = new_node
+            node.set_next(new_node)
+            #node.next = new_node
 
     def print_list(self):
         """Prints all elements in the list.
@@ -242,8 +299,8 @@ class List:
         """
         node = self.head
         while node != None:
-            print(node.data)
-            node = node.next
+            print(node.get_data())
+            node = node.get_next()
 
 def main():
     """Contains "quick and dirty" checks for the list ADT."""
@@ -282,8 +339,8 @@ def main():
         print("top_back works!")
 
     #Check head and tail
-    print("Current head: " + str(list.head.data))
-    print("Current tail: " + str(list.tail.data))
+    print("Current head: " + str(list.head.get_data()))
+    print("Current tail: " + str(list.tail.get_data()))
 
     #Test pop_back
     if list.pop_back() == 5:
@@ -302,8 +359,8 @@ def main():
 
     #Test add_before
     node = list.head
-    while node.data != 4:
-        node = node.next
+    while node.get_data() != 4:
+        node = node.get_next()
     list.add_before(node, 3)
     list.print_list()
     print("add_before works!")

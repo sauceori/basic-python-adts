@@ -25,7 +25,7 @@ class Stack:
         Arguments:
         self -- reference to the stack being constructed
         """
-        self.stack = List()
+        self._stack = List()
 
     def push(self, new):
         """Adds new to the top of the stack.
@@ -34,7 +34,7 @@ class Stack:
         self -- reference to this stack instance
         new -- data to be pushed onto the stack
         """
-        self.stack.push_back(new)
+        self._stack.push_back(new)
 
     def top(self):
         """Returns the item at the top of the stack
@@ -42,7 +42,7 @@ class Stack:
         Arguments:
         self -- reference to this stack instance
         """
-        return self.stack.top_back()
+        return self._stack.top_back()
 
     def pop(self):
         """Removes the item at the top of the stack, returns it.
@@ -50,7 +50,7 @@ class Stack:
         Arguments:
         self -- reference to this stack instance
         """
-        return self.stack.pop_back()
+        return self._stack.pop_back()
 
     def empty(self):
         """Returns true if the stack is empty, else false.
@@ -58,4 +58,4 @@ class Stack:
         Arguments:
         self -- reference to this stack instance
         """
-        return self.stack.empty()
+        return self._stack.empty()
