@@ -1,6 +1,3 @@
-2022 SOFTWARE ENGINEERING INTERN CANDIDATE PROGRAMMING CHALLENGE
-Ethan Hopkins for Durbin Group
-
 INTRODUCTION
 This project directory contains modules which implement abstract data types using the list, stack,
 and queue data structures. In addition, unit and acceptance tests can be found within the tests
